@@ -36,7 +36,7 @@ from google.cloud.translate_v3.services.translation_service import pagers
 from google.cloud.translate_v3.types import translation_service
 from google.protobuf import timestamp_pb2 as timestamp  # type: ignore
 
-from .transports.base import TranslationServiceTransport
+from .transports.base import TranslationServiceTransport, DEFAULT_CLIENT_INFO
 from .transports.grpc import TranslationServiceGrpcTransport
 from .transports.grpc_asyncio import TranslationServiceGrpcAsyncIOTransport
 
@@ -155,6 +155,7 @@ class TranslationServiceClient(metaclass=TranslationServiceClientMeta):
         credentials: credentials.Credentials = None,
         transport: Union[str, TranslationServiceTransport] = None,
         client_options: ClientOptions = None,
+        client_info: gapic_v1.client_info.ClientInfo = DEFAULT_CLIENT_INFO,
     ) -> None:
         """Instantiate the translation service client.
 
@@ -180,6 +181,11 @@ class TranslationServiceClient(metaclass=TranslationServiceClientMeta):
                 (2) The ``client_cert_source`` property is used to provide client
                 SSL credentials for mutual TLS transport. If not provided, the
                 default SSL credentials will be used if present.
+            client_info (google.api_core.gapic_v1.client_info.ClientInfo):	
+                The client info used to send a user-agent string along with	
+                API requests. If ``None``, then default info will be used.	
+                Generally, you only need to set this if you're developing	
+                your own client library.
 
         Raises:
             google.auth.exceptions.MutualTLSChannelError: If mutual TLS transport
@@ -237,6 +243,7 @@ class TranslationServiceClient(metaclass=TranslationServiceClientMeta):
                 api_mtls_endpoint=client_options.api_endpoint,
                 client_cert_source=client_options.client_cert_source,
                 quota_project_id=client_options.quota_project_id,
+                client_info=client_info,
             )
 
     def translate_text(
@@ -1056,11 +1063,11 @@ class TranslationServiceClient(metaclass=TranslationServiceClientMeta):
 
 
 try:
-    _client_info = gapic_v1.client_info.ClientInfo(
+    DEFAULT_CLIENT_INFO = gapic_v1.client_info.ClientInfo(
         gapic_version=pkg_resources.get_distribution("google-cloud-translate",).version,
     )
 except pkg_resources.DistributionNotFound:
-    _client_info = gapic_v1.client_info.ClientInfo()
+    DEFAULT_CLIENT_INFO = gapic_v1.client_info.ClientInfo()
 
 
 __all__ = ("TranslationServiceClient",)

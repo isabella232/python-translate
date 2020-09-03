@@ -34,7 +34,7 @@ from google.cloud.translate_v3.services.translation_service import pagers
 from google.cloud.translate_v3.types import translation_service
 from google.protobuf import timestamp_pb2 as timestamp  # type: ignore
 
-from .transports.base import TranslationServiceTransport
+from .transports.base import TranslationServiceTransport, DEFAULT_CLIENT_INFO
 from .transports.grpc_asyncio import TranslationServiceGrpcAsyncIOTransport
 from .client import TranslationServiceClient
 
@@ -63,6 +63,7 @@ class TranslationServiceAsyncClient:
         credentials: credentials.Credentials = None,
         transport: Union[str, TranslationServiceTransport] = "grpc_asyncio",
         client_options: ClientOptions = None,
+        client_info: gapic_v1.client_info.ClientInfo = DEFAULT_CLIENT_INFO,
     ) -> None:
         """Instantiate the translation service client.
 
@@ -95,7 +96,10 @@ class TranslationServiceAsyncClient:
         """
 
         self._client = TranslationServiceClient(
-            credentials=credentials, transport=transport, client_options=client_options,
+            credentials=credentials,
+            transport=transport,
+            client_options=client_options,
+            client_info=client_info,
         )
 
     async def translate_text(
@@ -248,7 +252,7 @@ class TranslationServiceAsyncClient:
         rpc = gapic_v1.method_async.wrap_method(
             self._client._transport.translate_text,
             default_timeout=600.0,
-            client_info=_client_info,
+            client_info=DEFAULT_CLIENT_INFO,
         )
 
         # Certain fields should be provided within the metadata header;
@@ -368,7 +372,7 @@ class TranslationServiceAsyncClient:
         rpc = gapic_v1.method_async.wrap_method(
             self._client._transport.detect_language,
             default_timeout=600.0,
-            client_info=_client_info,
+            client_info=DEFAULT_CLIENT_INFO,
         )
 
         # Certain fields should be provided within the metadata header;
@@ -490,11 +494,11 @@ class TranslationServiceAsyncClient:
                 maximum=60.0,
                 multiplier=1.3,
                 predicate=retries.if_exception_type(
-                    exceptions.DeadlineExceeded, exceptions.ServiceUnavailable,
+                    exceptions.ServiceUnavailable, exceptions.DeadlineExceeded,
                 ),
             ),
             default_timeout=600.0,
-            client_info=_client_info,
+            client_info=DEFAULT_CLIENT_INFO,
         )
 
         # Certain fields should be provided within the metadata header;
@@ -558,7 +562,7 @@ class TranslationServiceAsyncClient:
         rpc = gapic_v1.method_async.wrap_method(
             self._client._transport.batch_translate_text,
             default_timeout=600.0,
-            client_info=_client_info,
+            client_info=DEFAULT_CLIENT_INFO,
         )
 
         # Certain fields should be provided within the metadata header;
@@ -647,7 +651,7 @@ class TranslationServiceAsyncClient:
         rpc = gapic_v1.method_async.wrap_method(
             self._client._transport.create_glossary,
             default_timeout=600.0,
-            client_info=_client_info,
+            client_info=DEFAULT_CLIENT_INFO,
         )
 
         # Certain fields should be provided within the metadata header;
@@ -733,11 +737,11 @@ class TranslationServiceAsyncClient:
                 maximum=60.0,
                 multiplier=1.3,
                 predicate=retries.if_exception_type(
-                    exceptions.DeadlineExceeded, exceptions.ServiceUnavailable,
+                    exceptions.ServiceUnavailable, exceptions.DeadlineExceeded,
                 ),
             ),
             default_timeout=600.0,
-            client_info=_client_info,
+            client_info=DEFAULT_CLIENT_INFO,
         )
 
         # Certain fields should be provided within the metadata header;
@@ -818,11 +822,11 @@ class TranslationServiceAsyncClient:
                 maximum=60.0,
                 multiplier=1.3,
                 predicate=retries.if_exception_type(
-                    exceptions.DeadlineExceeded, exceptions.ServiceUnavailable,
+                    exceptions.ServiceUnavailable, exceptions.DeadlineExceeded,
                 ),
             ),
             default_timeout=600.0,
-            client_info=_client_info,
+            client_info=DEFAULT_CLIENT_INFO,
         )
 
         # Certain fields should be provided within the metadata header;
@@ -903,11 +907,11 @@ class TranslationServiceAsyncClient:
                 maximum=60.0,
                 multiplier=1.3,
                 predicate=retries.if_exception_type(
-                    exceptions.DeadlineExceeded, exceptions.ServiceUnavailable,
+                    exceptions.ServiceUnavailable, exceptions.DeadlineExceeded,
                 ),
             ),
             default_timeout=600.0,
-            client_info=_client_info,
+            client_info=DEFAULT_CLIENT_INFO,
         )
 
         # Certain fields should be provided within the metadata header;
@@ -932,11 +936,11 @@ class TranslationServiceAsyncClient:
 
 
 try:
-    _client_info = gapic_v1.client_info.ClientInfo(
+    DEFAULT_CLIENT_INFO = gapic_v1.client_info.ClientInfo(
         gapic_version=pkg_resources.get_distribution("google-cloud-translate",).version,
     )
 except pkg_resources.DistributionNotFound:
-    _client_info = gapic_v1.client_info.ClientInfo()
+    DEFAULT_CLIENT_INFO = gapic_v1.client_info.ClientInfo()
 
 
 __all__ = ("TranslationServiceAsyncClient",)
